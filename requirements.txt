@@ -1,0 +1,4 @@
+# ===== RAG 知识库运行时依赖 =====
+python-dotenv>=1.0.0          # 配置文件加载（.env）
+pypdf>=4.0.0                 # PDF 文档加载
+beautifulsoup4>=4.12.0       # HTML 文档加载与清洗

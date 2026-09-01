@@ -1,0 +1,8 @@
+{
+  "name": "测试 CWE 映射",
+  "cwe_id": "CWE-79",
+  "vulnerability_type": "Injection",
+  "severity": "High",
+  "description": "XSS 漏洞测试数据",
+  "languages": ["JavaScript", "Java"]
+}

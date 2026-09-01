@@ -1,0 +1,4 @@
+# ===== Dev / test dependencies =====
+-r backend/requirements.txt
+pytest>=8.0.0
+reportlab>=4.0.0

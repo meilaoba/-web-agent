@@ -1,0 +1,79 @@
+# =====================================================
+# AI 代码安全审计系统 - Docker Compose 部署
+# 组成：mysql（业务数据库）+ backend（FastAPI）+ frontend（Nginx）
+# 用法：docker compose up -d --build
+# 访问：http://localhost （前端） / http://localhost:8000/docs （API）
+# 安全提示：生产部署请务必通过 .env 设置强随机 JWT_SECRET 与 MYSQL_ROOT_PASSWORD，
+#          并配置 CORS_ORIGINS 为前端域名。
+# =====================================================
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: ai-audit-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root123456}
+      MYSQL_DATABASE: ai_security_audit
+      TZ: Asia/Shanghai
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-p${MYSQL_ROOT_PASSWORD:-root123456}"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: ai-audit-backend
+    environment:
+      DB_TYPE: mysql
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_USER: root
+      DB_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root123456}
+      DB_NAME: ai_security_audit
+      JWT_SECRET: ${JWT_SECRET:-change-me-in-production}
+      LLM_API_KEY: ${LLM_API_KEY:-}
+      LLM_BASE_URL: ${LLM_BASE_URL:-https://api.deepseek.com/v1}
+      LLM_MODEL: ${LLM_MODEL:-deepseek-chat}
+      EMBEDDING_PROVIDER: ${EMBEDDING_PROVIDER:-hashing}
+      CORS_ORIGINS: ${CORS_ORIGINS:-}
+    volumes:
+      - app_data:/app/data
+    depends_on:
+      mysql:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/health', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 15s
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    container_name: ai-audit-frontend
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost/"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    restart: unless-stopped
+
+volumes:
+  mysql_data:
+  app_data:

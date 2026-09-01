@@ -1,0 +1,42 @@
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ===== 虚拟环境 / 本地依赖 =====
+.venv/
+.deps/
+vendor/
+
+# ===== 环境变量 =====
+.env
+.env.local
+
+# ===== 数据处理产物 =====
+# processed 数据由 scripts/build_knowledge_base.py 生成，不纳入版本管理
+backend/data/processed/
+backend/data/chroma/
+backend/data/uploads/
+backend/data/agent_logs/
+backend/data/app.db
+backend/data/test_app.db
+
+# ===== 前端 =====
+frontend/node_modules/
+frontend/dist/
+frontend/.npm-cache/
+
+# ===== 系统 =====
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# ===== 内部文档（不纳入版本管理，本地保留） =====
+开发日志/
+项目阅读文档.md
+docs/
+backend/tests/fixtures/力扣.py

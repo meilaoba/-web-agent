@@ -1,0 +1,85 @@
+{
+  "description": "常用 Web 漏洞 CWE 映射表（Phase 1 测试用，原创整理）",
+  "items": [
+    {
+      "cwe_id": "CWE-89",
+      "name": "SQL Injection",
+      "vulnerability_type": "Injection",
+      "owasp_id": "A03:2021",
+      "severity": "Critical",
+      "language": ["Java", "Python", "PHP"]
+    },
+    {
+      "cwe_id": "CWE-79",
+      "name": "Cross-Site Scripting",
+      "vulnerability_type": "Injection",
+      "owasp_id": "A03:2021",
+      "severity": "High",
+      "language": ["JavaScript", "Java", "Python"]
+    },
+    {
+      "cwe_id": "CWE-918",
+      "name": "Server-Side Request Forgery",
+      "vulnerability_type": "SSRF",
+      "owasp_id": "A10:2021",
+      "severity": "High",
+      "language": ["Java", "Python", "Go"]
+    },
+    {
+      "cwe_id": "CWE-434",
+      "name": "Unrestricted File Upload",
+      "vulnerability_type": "File Upload",
+      "owasp_id": "A03:2021",
+      "severity": "High",
+      "language": ["Java", "Python", "PHP"]
+    },
+    {
+      "cwe_id": "CWE-22",
+      "name": "Path Traversal",
+      "vulnerability_type": "Access Control",
+      "owasp_id": "A01:2021",
+      "severity": "High",
+      "language": ["Java", "Python", "PHP"]
+    },
+    {
+      "cwe_id": "CWE-78",
+      "name": "Command Injection",
+      "vulnerability_type": "Injection",
+      "owasp_id": "A03:2021",
+      "severity": "Critical",
+      "language": ["Java", "Python", "PHP"]
+    },
+    {
+      "cwe_id": "CWE-352",
+      "name": "Cross-Site Request Forgery",
+      "vulnerability_type": "CSRF",
+      "owasp_id": "A01:2021",
+      "severity": "Medium",
+      "language": ["Java", "Python", "JavaScript"]
+    },
+    {
+      "cwe_id": "CWE-611",
+      "name": "XML External Entity",
+      "vulnerability_type": "XXE",
+      "owasp_id": "A05:2021",
+      "severity": "High",
+      "language": ["Java", "Python", "PHP"]
+    },
+    {
+      "cwe_id": "CWE-502",
+      "name": "Insecure Deserialization",
+      "vulnerability_type": "Deserialization",
+      "owasp_id": "A08:2021",
+      "severity": "Critical",
+      "language": ["Java", "Python", "PHP"]
+    },
+    {
+      "cwe_id": "CWE-287",
+      "name": "Improper Authentication",
+      "vulnerability_type": "Authentication",
+      "owasp_id": "A07:2021",
+      "severity": "High",
+      "language": ["Java", "Python"]
+    }
+  ]
+}

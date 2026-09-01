@@ -1,0 +1,41 @@
+# ===== 版本控制 / IDE =====
+.git
+.gitignore
+.idea
+.vscode
+
+# ===== Python =====
+.deps
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# ===== 敏感配置 =====
+.env
+.env.local
+.env.*.local
+
+# ===== 数据产物（运行时生成，不入镜像） =====
+backend/data/uploads/
+backend/data/agent_logs/
+backend/data/processed/
+backend/data/chroma/
+backend/data/app.db
+*.db
+
+# ===== 前端 =====
+frontend/node_modules/
+frontend/dist/
+frontend/.npm-cache/
+
+# ===== 文档（仅根目录的 Markdown，保留 backend/data/raw 下的知识文档） =====
+/*.md
+
+# ===== 其他 =====
+scripts/
+docs/
+开发日志/
+.DS_Store
+Thumbs.db

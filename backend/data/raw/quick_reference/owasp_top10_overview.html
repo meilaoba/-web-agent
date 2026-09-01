@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>OWASP Top 10 2021 快速概览 - 测试网页</title>
+</head>
+<body>
+    <nav class="site-nav">
+        <a href="/">首页</a>
+        <a href="/about">关于我们</a>
+        <a href="/contact">联系我们</a>
+        <a href="/login">登录</a>
+        <a href="/register">注册</a>
+    </nav>
+
+    <h1>OWASP Top 10 2021 快速概览</h1>
+
+    <p>本文档用于测试 HTML 加载与清洗效果，正文内容为原创整理。</p>
+
+    <h2>A03:2021 注入（Injection）</h2>
+    <p>注入类漏洞包括 SQL 注入（CWE-89）、命令注入（CWE-78）、
+       跨站脚本（CWE-79）等，核心问题是不可信输入被当作代码或查询结构执行。</p>
+
+    <h2>A10:2021 服务端请求伪造（SSRF）</h2>
+    <p>SSRF（CWE-918）允许攻击者控制服务端发起的内网请求，
+       常见于 URL 预览与回调功能。</p>
+
+    <h2>修复原则</h2>
+    <pre><code>// 示例：SQL 注入修复
+PreparedStatement ps = conn.prepareStatement(
+    "SELECT * FROM users WHERE id=?");
+ps.setString(1, userId);</code></pre>
+
+    <p>以上内容基于 OWASP 公开知识整理。</p>
+
+    <footer class="site-footer">
+        <p>版权所有 © 2025 安全知识库</p>
+        <p>All rights reserved.</p>
+        <p>隐私政策 | 使用条款 | 网站地图</p>
+    </footer>
+</body>
+</html>
